@@ -1,18 +1,27 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
 
-function Robodisplay({ robots }) {
+function Robodisplay() {
+  const [robots, setRobots] = useState([]);
+
+  useEffect(() => {
+    fetch('/db.json')
+      .then(response => response.json())
+      .then(data => setRobots(data.bots))
+      .catch(error => console.error('Error fetching robots:', error));
+  }, []);
+
   return (
-    <div id='div1'>
-        {
-            robots.map(robot => (
-                <div key={robot.id}>
-                    <img src={robot.image} alt={robot.name} />
-                    <p>{robot.name}</p>
-                </div>
-            ))
-        }
+    <div className="robot-container">
+      {robots.map(robot => (
+        <img
+          key={robot.id}
+          src={robot.image}
+          alt={robot.name}
+          className="robot-image"
+        />
+      ))}
     </div>
-  )
+  );
 }
 
-export default Robodisplay
+export default Robodisplay;
