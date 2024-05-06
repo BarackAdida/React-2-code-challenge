@@ -4,7 +4,7 @@ function Robodisplay() {
   const [robots, setRobots] = useState([]);
 
   useEffect(() => {
-    fetch('/db.json')
+    fetch('http://localhost:3000/bots')
       .then(response => response.json())
       .then(data => setRobots(data.bots))
       .catch(error => console.error('Error fetching robots:', error));

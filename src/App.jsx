@@ -4,10 +4,11 @@ import Ondisplay from './Ondisplay';
 function App() {
   return (
     <div>
-      <Robodisplay />
-      <Ondisplay />
+       <Ondisplay />
+       <Robodisplay /> 
     </div>
   );
 }
 
 export default App;
+
